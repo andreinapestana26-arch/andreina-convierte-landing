@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es" style="background-color:#1A1A1D;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email que Vende con IA — Descarga gratuita</title>
+  <meta name="description" content="Guía completa + 2 plantillas HTML profesionales para crear campañas de email marketing con inteligencia artificial. Gratis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --plum:       #7B2D8B;
+      --plum-dark:  #5a1f6b;
+      --plum-deep:  #3d1249;
+      --gold:       #C9A84C;
+      --gold-light: #f0d98a;
+      --graphite:   #1A1A1D;
+      --smoke:      #F5F5F7;
+      --lavender:   #F0E6F4;
+      --white:      #ffffff;
+      --grey:       #666666;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #1A1A1D !important;
+      color: #ffffff !important;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 24px 60px;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 700px;
+      height: 700px;
+      background-color: #1A1A1D; background: radial-gradient(circle, rgba(123,45,139,0.45) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .hero h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: #ffffff !important;
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 24px 0 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+
+    /* ── COMBO CARDS ── */
+    .combo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.5s;
+    }
+
+    .combo-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 12px;
+      padding: 20px 18px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .combo-card:hover {
+      background: rgba(201,168,76,0.07);
+      border-color: rgba(201,168,76,0.45);
+    }
+
+    .combo-card .card-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .combo-card .card-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .combo-card .card-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff !important;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .combo-card .card-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+
+    /* ── CTA ── */
+    .cta-wrap {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.65s;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--gold);
+      color: var(--graphite);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 32px rgba(201,168,76,0.25);
+    }
+
+    .cta-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(201,168,76,0.4);
+    }
+
+    .cta-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .cta-note {
+      display: block;
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── DIVIDER ── */
+    .gold-line {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 80px 0;
+      opacity: 0.4;
+    }
+
+    /* ── WHAT'S INSIDE ── */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .section-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #ffffff !important;
+      margin-bottom: 40px;
+      line-height: 1.1;
+    }
+
+    /* ── INCLUDES LIST ── */
+    .includes {
+      display: grid;
+      gap: 2px;
+    }
+
+    .include-row {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      align-items: start;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .include-row:last-child { border-bottom: none; }
+
+    .include-num {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: rgba(123,45,139,0.4);
+      line-height: 1;
+      padding-top: 4px;
+    }
+
+    .include-content h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff !important;
+      margin-bottom: 6px;
+    }
+
+    .include-content p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    .include-tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.12);
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    /* ── FOR WHO ── */
+    .for-who {
+      background: rgba(123,45,139,0.12);
+      border: 1px solid rgba(123,45,139,0.3);
+      border-radius: 16px;
+      padding: 40px 36px;
+      margin-bottom: 60px;
+    }
+
+    .for-who h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff !important;
+      margin-bottom: 24px;
+    }
+
+    .for-who-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .for-who-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+    }
+
+    .for-who-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* ── CTA BOTTOM ── */
+    .cta-bottom {
+      text-align: center;
+      padding: 60px 24px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-bottom p {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      color: #ffffff !important;
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+
+    /* ── BRIDGE TO COURSE ── */
+    .bridge {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bridge-card {
+      background: linear-gradient(135deg, rgba(90,31,107,0.5), rgba(26,10,46,0.8));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 16px;
+      padding: 40px 36px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .bridge-text { flex: 1; }
+
+    .bridge-text .section-eyebrow { margin-bottom: 10px; }
+
+    .bridge-text h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff !important;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .bridge-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .bridge-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .bridge-link:hover {
+      color: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    footer a {
+      color: rgba(201,168,76,0.6);
+      text-decoration: none;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .combo { grid-template-columns: 1fr; }
+      .bridge-card { flex-direction: column; gap: 20px; }
+      .for-who { padding: 28px 22px; }
+      .cta-btn { width: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 48px; }
+    }
+
+    /* ── DARK MODE FORCE ── */
+    html, body {
+      background-color: #1A1A1D !important;
+      color: #ffffff !important;
+    }
+    .hero {
+      background-color: #1A1A1D !important;
+    }
+    section, .section, .bridge, .cta-bottom {
+      background-color: #1A1A1D !important;
+    }
+    footer {
+      background-color: #1A1A1D !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <span class="eyebrow">Descarga gratuita &nbsp;·&nbsp; Andreina Pestana</span>
+
+      <h1>Email que<br>Vende <em>con IA</em></h1>
+
+      <p class="hero-sub">
+        La guía completa para crear campañas de email marketing profesionales
+        usando inteligencia artificial — aunque nunca hayas hecho una en tu vida.
+      </p>
+
+      <!-- Combo cards -->
+      <div class="combo">
+        <div class="combo-card">
+          <div class="card-icon">📄</div>
+          <div class="card-label">Incluye</div>
+          <div class="card-title">Guía PDF completa</div>
+          <div class="card-desc">9 secciones. Teoría, flujo, copywriting, herramientas y prompts de IA.</div>
+        </div>
+        <div class="combo-card">
+          <div class="card-icon">🎨</div>
+          <div class="card-label">Incluye</div>
+          <div class="card-title">Plantilla de bienvenida</div>
+          <div class="card-desc">HTML profesional lista para importar. La IA la personaliza con tus datos.</div>
+        </div>
+        <div class="combo-card">
+          <div class="card-icon">🚀</div>
+          <div class="card-label">Incluye</div>
+          <div class="card-title">Plantilla de oferta</div>
+          <div class="card-desc">Para lanzamientos y conversión. Diseñada como las que hace una agencia.</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-wrap">
+        <a href="/descargas/email-que-vende-combo.zip" class="cta-btn" download>
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Descargar el combo gratis
+        </a>
+        <span class="cta-note">3 archivos · PDF + 2 HTML · Sin registro</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ WHAT'S INSIDE ══════════════════════════════════════ -->
+  <div style="max-width:780px; margin:0 auto; padding:0 24px;">
+    <div class="gold-line"></div>
+  </div>
+
+  <section class="section">
+
+    <p class="section-eyebrow">Qué hay dentro</p>
+    <h2>Todo lo que necesitas<br>para empezar hoy</h2>
+
+    <div class="includes">
+
+      <div class="include-row">
+        <div class="include-num">01</div>
+        <div class="include-content">
+          <span class="include-tag">PDF · 9 secciones</span>
+          <h3>Guía completa de email marketing con IA</h3>
+          <p>Por qué el email sigue siendo el canal con mayor retorno, el flujo en 5 pasos, los 5 emails que todo negocio necesita, copywriting práctico con la estructura PAS, errores comunes, tabla comparativa de herramientas y prompts exactos de Claude para escribir cada tipo de email.</p>
+        </div>
+      </div>
+
+      <div class="include-row">
+        <div class="include-num">02</div>
+        <div class="include-content">
+          <span class="include-tag">HTML · Lista para importar</span>
+          <h3>Plantilla de bienvenida profesional</h3>
+          <p>Diseñada con la misma estructura que usa una agencia: header de marca, caja de regalo, sección "qué esperar" y firma. Funciona en Brevo, Mailchimp y MailerLite. La personalizas con un prompt de Claude en menos de 2 minutos.</p>
+        </div>
+      </div>
+
+      <div class="include-row">
+        <div class="include-num">03</div>
+        <div class="include-content">
+          <span class="include-tag">HTML · Lista para importar</span>
+          <h3>Plantilla de oferta y lanzamiento</h3>
+          <p>Con banda de urgencia, tarjeta de producto con precio destacado, lista de beneficios y botón de compra. Para cuando tengas algo que vender y quieras que se vea como lo hace una marca grande.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gold-line" style="margin: 60px 0;"></div>
+
+    <!-- For who -->
+    <div class="for-who">
+      <h3>¿Para quién es esto?</h3>
+      <ul class="for-who-list">
+        <li>Para quien tiene un negocio y sabe que debería usar el email, pero nunca sabe por dónde empezar.</li>
+        <li>Para quien contrata a alguien para que lo haga, pero quiere entender qué le están entregando.</li>
+        <li>Para quien siempre lo dejó "para cuando tenga más tiempo o más presupuesto".</li>
+        <li>Para quien quiere hacer en una tarde lo que antes le tomaba días o le costaba dinero.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ══ CTA BOTTOM ═════════════════════════════════════════ -->
+  <div class="cta-bottom">
+    <p>¿Listo para tu<br>primer email profesional?</p>
+    <a href="/descargas/email-que-vende-combo.zip" class="cta-btn" download>
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="width:20px;height:20px;">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+      </svg>
+      Descargar gratis
+    </a>
+    <span class="cta-note" style="display:block;margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">Sin registro · Descarga inmediata</span>
+  </div>
+
+  <!-- ══ BRIDGE TO COURSE ═══════════════════════════════════ -->
+  <div class="bridge">
+    <div class="bridge-card">
+      <div class="bridge-text">
+        <p class="section-eyebrow">¿Quieres ir más lejos?</p>
+        <h3>De la Improvisación al Sistema</h3>
+        <p>
+          El curso completo para construir un proceso de ventas real en tu negocio.
+          Cinco módulos, herramientas de IA incluidas y metodología probada
+          para dejar de improvisar de una vez por todas.
+        </p>
+        <a href="https://andreinaconvierte.netlify.app" class="bridge-link">
+          Ver el curso completo →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ═════════════════════════════════════════════ -->
+  <footer>
+    <p>
+      &copy; 2026 Andreina Pestana &nbsp;·&nbsp;
+      <a href="https://andreinaconvierte.netlify.app">andreinaconvierte.netlify.app</a>
+    </p>
+  </footer>
+
+</body>
+</html>
